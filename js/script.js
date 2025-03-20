@@ -1,8 +1,9 @@
 const calculateexpense = () => {
-  const income = document.querySelector("income").value;
-  const food = document.querySelector("food").value;
+  const income = document.querySelector("#income").value;
+  const food = document.querySelector("#food").value;
   const rent = document.querySelector("#rent").value;
-  const clothes = document.querySelectorAll("clothes").value;
+  const clothes = document.querySelectorAll("#clothes")[0].value;
+  console.log(clothes)
 
   if (
     income < 0 ||
@@ -22,9 +23,9 @@ const calculateexpense = () => {
     parseInt(food) + parseInt(rent) + parseInt(clothes);
 
   // calculate balance
-  const balance = parseInt(income.value) - expense;
+  const balance = parseInt(income) - expense;
   //   validate income
-  if (expense > income.value) {
+  if (expense > income) {
     alert("Expenses cannot be more than income");
   } else {
     // view total expense and balance
@@ -36,11 +37,14 @@ const calculateexpense = () => {
 const calculateSavings = () => {
   // calculate saving amount
   const savePercentage = document.getElementById("save").value;
+    const income = document.querySelector("#income").value;
+
 //   Validate saving percentage value
   if (savePercentage < 0) {
     alert("Provide positive saving value");
   }
-  const savingAmount = (savePercentage / 100) + income;
+
+  const savingAmount = (savePercentage / 100) * income;
 
   // calculate remaining balance
   const balance = document.getElementById("balance").innerText;
